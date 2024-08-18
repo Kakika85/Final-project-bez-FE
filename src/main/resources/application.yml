@@ -1,0 +1,30 @@
+spring:
+  banner:
+    location: classpath:banner.txt
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+      INDENT_OUTPUT: true
+
+  application:
+    name: flywayapp
+  datasource:
+    url: jdbc:mysql://localhost:3306/finalProject
+    username: root
+    password: Pasword1
+    testOnBorrow: true
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 1
+    max-active: 15
+    max-idle: 10
+    max-wait: 8000
+  flyway:
+    baseline-on-migrate: true
+    out-of-order: true
+    url: jdbc:mysql://localhost:3306
+    schemas: finalProject
+    user: root
+    password: Pasword1
+

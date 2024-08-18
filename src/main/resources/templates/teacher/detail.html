@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'Učitel ' + ${teacher.teacherFullName}">Učitel</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-icons.css}">
+    <link rel="stylesheet" th:href="@{/css/teacher.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Učitel: <strong th:text="${teacher.teacherFullName}">Jméno a příjmení </strong></h1>
+    <p>Třída: <span th:text="${teacher.classRoom}">Třída</span></p>
+        <a th:href="@{/teacher/{teacherId}}">
+            <i class="bi bi-arrow-right-square-fill"></i>
+        </a>
+</div>
+</body>
+</html>

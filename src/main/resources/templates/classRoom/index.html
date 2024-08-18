@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Seznam studentů ve třídě</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-icons.css}">
+    <link rel="stylesheet" th:href="@{/css/teacher.css}">
+</head>
+<body>
+<div class="containers">
+    <h1>Seznam tříd</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Třída</th>
+            <th scope="col">Třídní učitel</th>
+            <th scope="col">Detail</th>
+            <th scope="col">Vymazat</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="classRoom : ${classRoomList}">
+            <td th:text="${classRoom.classRoomName}">ClassRoom Name</td>
+
+            <td th:text="${classRoom.classTeacher}">ClassRoom Teacher</td>
+            <td>
+                <a th:href="@{/classRoom/{id}(id=${classRoom.classRoomId})}">
+                    <i class="bi bi-arrow-right-square-fill"></i> <img src="images/detail.png" alt="Detail">
+                </a>
+            </td>
+            <td>
+                <form th:action="@{/classRoom/deleteClassRoom}" method="post" onsubmit="return confirm('Opravdu chcete smazat tuto třídu?');">
+                    <input type="hidden" name="classRoomId" th:value="${classRoom.classRoomId}" />
+                    <button type="submit" class="btn btn-danger">🗑️</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <h2 class="mt-5">Vytvořit novou třídu</h2>
+    <form th:action="@{/classRoom/createClassRoom}" method="post">
+        <div class="mb-3">
+            <label for="classRoomName" class="form-label">Třída</label>
+            <input type="text" class="form-control" id="classRoomName" name="classRoomName" required>
+        </div>
+        <div class="mb-3">
+            <label for="teacherFullName" class="form-label">Jméno třídního učitele</label>
+            <input type="text" class="form-control" id="teacherFullName" name="teacherFullName">
+        </div>
+        <button type="submit" class="btn btn-primary">Vytvořit</button>
+    </form>
+</div>
+</body>
+</html>

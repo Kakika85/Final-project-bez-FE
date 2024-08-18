@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'Rodič ' + ${parent.parentFullName}">Rodič</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-icons.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Rodič: <strong th:text="${parent.parentFullName}">Parent Full Name</strong></h1>
+    <p>Email: <span th:text="${parent.parentEmail}">Email</span></p>
+    <p>Telefon: <span th:text="${parent.parentPhone}">Phone</span></p>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Příjmení</th>
+            <th scope="col">Jméno</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="child : ${parent.children}">
+            <td th:text="${child.studentSurname}">Student Surname</td>
+            <td th:text="${child.studentName}">Student Name</td>
+            <td>
+                <a th:href="@{/student/{id}(id=${child.studentId})}">
+                    <i class="bi bi-arrow-right-square-fill"></i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+.container {
+    max-width: 900px; /* Zvětšení maximální šířky kontejneru pro lepší zarovnání */
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.image-container {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    max-width: 100%;
+    border-radius: 8px; /* Zaoblení rámečku */
+}
+
+.image-container img {
+    max-width: 240px; /* Zde jsem zvětšila maximální šířku obrázku na 240px */
+    height: auto; /* Automatická výška */
+    border-radius: 8px; /* Zaoblení obrázku */
+    padding: 5px;
+    display: block;
+    margin: 0 auto; /* Zarovnání obrázku na střed */
+}
+
+.image-container p {
+    margin-top: 10px;
+    color: black;
+}
+
+.image-link {
+    text-decoration: none; /* Odebrání podtržení */
+}
+
+.navbar {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between; /* Zarovnání do pravého rohu */
+}
+
+.navbar-brand {
+    margin-left: 20px;
+}
+
+
+.navbar-nav {
+    display: flex;
+    justify-content: flex-end; /* Zarovnání položek do pravého rohu */
+    gap: 10px;
+}
+
+.nav-link:hover {
+    color: gray; /* Barva textu po najetí myší */
+}
+

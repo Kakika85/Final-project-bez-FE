@@ -1,0 +1,56 @@
+/* Styl pro container */
+.container {
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Styl pro nadpis */
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Styl pro text v odstavcích */
+p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Styl pro tabulku */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+/* Styl pro tabulku s ohraničením */
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6;
+    vertical-align: middle; /* Vertikální zarovnání textu na střed */
+}
+
+/* Styl pro hlavičku tabulky */
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* Styl pro ikony v tabulce */
+.bi {
+    font-size: 1.5rem; /* Nastaví velikost ikon */
+}
+
+/* Rozšíření buněk */
+.table td, .table th {
+    padding: 1rem; /* Nastaví vnitřní odsazení buněk */
+}

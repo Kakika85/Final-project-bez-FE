@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Seznam studentů</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-icons.css}">
+    <link rel="stylesheet" th:href="@{/css/teacher.css}">
+</head>
+<body>
+<div class="containers">
+    <h1>Seznam studentů</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Jméno</th>
+            <th scope="col">Příjmení</th>
+            <th scope="col">Třída</th>
+            <th scope="col">Detail</th>
+            <th scope="col">Vymazat</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${studentList}">
+            <td th:text="${student.studentName}">Student Name</td>
+            <td th:text="${student.studentSurname}">Student Surname</td>
+            <td>
+                <a th:href="@{/classRoom/{id}(id=${student.classRoom.classRoomId})}" th:text="${student.classRoom.classRoomName}">
+                    Třída  <i class="bi bi-arrow-right-square-fill"></i>
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/student/{id}(id=${student.studentId})}">
+                    <i class="bi bi-arrow-right-square-fill"></i> <img src="images/detail.png" alt="Detail">
+                </a>
+            </td>
+            <td>
+                <form th:action="@{/student/deleteStudent}" method="post" onsubmit="return confirm('Opravdu chcete smazat tohoto učitele?');">
+                    <input type="hidden" name="studentId" th:value="${student.studentId}" />
+                    <button type="submit" class="btn btn-danger">🗑️</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <h2 class="mt-5">Vytvořit nového studenta</h2>
+    <form th:action="@{/student/createStudent}" method="post">
+        <div class="mb-3">
+            <label for="studentName" class="form-label">Jméno</label>
+            <input type="text" class="form-control" id="studentName" name="studentName" required>
+        </div>
+        <div class="mb-3">
+            <label for="studentSurname" class="form-label">Příjmení</label>
+            <input type="text" class="form-control" id="studentSurname" name="studentSurname" required>
+        </div>
+        <div class="mb-3">
+            <label for="classRoomId" class="form-label">Třída</label>
+            <select class="form-control" id="classRoomId" name="classRoomId" required>
+                <option value="" disabled selected>Vyberte třídu</option>
+                <option th:each="classRoom : ${classRoomList}"
+                        th:value="${classRoom.classRoomId}"
+                        th:text="${classRoom.classRoomName}">
+                    ClassRoom Name
+                </option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Vytvořit</button>
+    </form>
+</div>
+
+</body>
+</html>
